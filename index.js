@@ -46,18 +46,20 @@ function ShowResult(result) {
 function Parse() {
     var input = GetTestFromTextBox().value;
     var output = "";
+    var char = "";
 
     for (let i = 0; i < input.length; i++) { 
         if (input[i] === " ") {
             output += "|";
         } else {
-            try {
-            output +=  (mourselookup[input[i]])
-            if (i + 1 < input.length && input[i+1] != " ") {
-                output += "/";
-            }
-            } catch {
-                output += "?"
+            char = mourselookup[input[i]]
+            if (char == undefined) {
+                output += char;
+            } else {
+                output +=  (mourselookup[input[i]])
+                if (i + 1 < input.length && input[i+1] != " ") {
+                    output += "/";
+                }
             }
         }
     }
